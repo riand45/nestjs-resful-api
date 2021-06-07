@@ -3,6 +3,9 @@ import { Sequelize } from 'sequelize-typescript';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 
+import { Location } from '../../modules/locations/location.entity';
+import { Service } from '../../modules/services/service.entity';
+import { Barberman } from '../../modules/barbermans/barberman.entity';
 import { Schedule } from '../../modules/schedules/schedule.entity';
 import { Booking } from '../../modules/bookings/booking.entity';
 
@@ -25,7 +28,9 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([Schedule, Booking]);
+      sequelize.addModels([
+        Location, Service, Barberman, Schedule, Booking
+      ]);
       await sequelize.sync();
       return sequelize;
     },

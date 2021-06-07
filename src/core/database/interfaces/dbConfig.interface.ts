@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export interface IDatabaseConfigAttributes {
   username?: string;
   password?: string;

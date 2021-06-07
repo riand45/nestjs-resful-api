@@ -11,7 +11,7 @@ export class SchedulesService {
     private readonly scheduleRepository: typeof Schedule,
   ) { }
 
-  async findAll(): Promise<Schedule[]> {
+  async findAll(barbermanId: number, start_date: string, end_date: string): Promise<Schedule[]> {
     return await this.scheduleRepository.findAll<Schedule>({
       attributes: [
         'id',
@@ -21,18 +21,19 @@ export class SchedulesService {
         'status',
         [
           Sequelize.literal(
-            `( SELECT IF(bookings.date >= '2021-06-03' AND bookings.date <= '2021-06-10', bookings.customer_id, NULL) )`,
+            `( SELECT IF(bookings.date >= '${start_date}' AND bookings.date <= '${end_date}', bookings.customer_id, NULL) )`,
           ),
           'booking_customer',
         ],
         [
           Sequelize.literal(
-            `( SELECT IF(bookings.date >= '2021-06-03' AND bookings.date <= '2021-06-10', bookings.date, NULL)  )`,
+            `( SELECT IF(bookings.date >= '${start_date}' AND bookings.date <= '${end_date}', bookings.date, NULL)  )`,
           ),
           'booking_date',
         ],
       ],
       include: [{ model: Booking, required: false }],
+      where: { barberman_id: barbermanId }
     });
   }
 }
