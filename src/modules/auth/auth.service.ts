@@ -11,7 +11,6 @@ export class AuthService {
   ) { }
 
   async validateCustomer(qrcode: number, numberPhone: string) {
-    console.log('oke sajalah')
     //find if customer exist with this qrcode
     const customer = await this.customerService.findOneByQrcode(qrcode);
     if (!customer) {
