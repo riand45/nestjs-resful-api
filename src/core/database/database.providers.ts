@@ -8,6 +8,7 @@ import { Service } from '../../modules/services/service.entity';
 import { Barberman } from '../../modules/barbermans/barberman.entity';
 import { Schedule } from '../../modules/schedules/schedule.entity';
 import { Booking } from '../../modules/bookings/booking.entity';
+import { Customer } from '../../modules/customers/customer.entity';
 
 export const databaseProviders = [
   {
@@ -29,7 +30,12 @@ export const databaseProviders = [
       }
       const sequelize = new Sequelize(config);
       sequelize.addModels([
-        Location, Service, Barberman, Schedule, Booking
+        Location,
+        Service,
+        Barberman,
+        Schedule,
+        Booking,
+        Customer,
       ]);
       await sequelize.sync();
       return sequelize;
