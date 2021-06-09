@@ -7,6 +7,7 @@ import {
   ForeignKey,
 } from 'sequelize-typescript';
 import { Schedule } from '../schedules/schedule.entity';
+import { Customer } from '../customers/customer.entity';
 
 @Table
 export class Booking extends Model<Booking> {
@@ -17,6 +18,7 @@ export class Booking extends Model<Booking> {
   })
   schedule_id: number;
 
+  @ForeignKey(() => Customer)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

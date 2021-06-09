@@ -1,11 +1,11 @@
 import { IsNotEmpty } from 'class-validator';
 
 export class BookingDto {
-  @IsNotEmpty()
-  readonly schedule_id: number;
+  // @IsNotEmpty()
+  // readonly schedule_id: number;
 
-  @IsNotEmpty()
-  readonly customer_id: number;
+  // @IsNotEmpty()
+  // readonly customer_id: number;
 
   @IsNotEmpty()
   readonly date: string;
@@ -13,8 +13,8 @@ export class BookingDto {
   @IsNotEmpty()
   readonly price: number;
 
-  @IsNotEmpty()
-  readonly service_id: number;
+  // @IsNotEmpty()
+  // readonly service_id: number;
 
   @IsNotEmpty()
   readonly status: number;

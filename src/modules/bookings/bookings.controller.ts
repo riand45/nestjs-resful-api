@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  Request,
   Post,
   UseGuards,
   ValidationPipe,
@@ -21,24 +23,14 @@ export class BookingsController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Post()
+  @Post(':schedule_id/:service_id')
   async create(
     @Body(new ValidationPipe()) booking: BookingDto,
-    @Body('schedule_id') schedule_id: number,
-    @Body('customer_id') customer_id: number,
-    @Body('date') date: string,
-    @Body('price') price: number,
-    @Body('service_id') service_id: number,
-    @Body('status') status: number,
+    @Param('schedule_id') schedule_id: number,
+    @Param('service_id') service_id: number,
+    @Request() req
   ): Promise<Booking> {
-    console.log(booking);
-    return await this.bookingService.create({
-      schedule_id,
-      customer_id,
-      date,
-      price,
-      service_id,
-      status,
-    });
+    // console.log({...booking, schedule_id, service_id});
+    return await this.bookingService.create({ ...booking, schedule_id, service_id, customer_id: req.user.id });
   }
 }

@@ -24,7 +24,8 @@ export class BookingsService {
   //   return this.bookingRepository.create(booking);
   // }
 
-  async create(data): Promise<Booking> {
-    return this.bookingRepository.create(data);
+  async create(data: any): Promise<Booking> {
+    console.log(data)
+    return this.bookingRepository.create({ ...data });
   }
 }
