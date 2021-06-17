@@ -14,7 +14,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --testPathPattern=.\\test\\unit-tests",
+    "test": "jest --testPathPattern=./test/unit-tests --collect-coverage",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -73,20 +73,18 @@
     "typescript": "^4.2.3"
   },
   "jest": {
+    "preset": "ts-jest",
     "moduleFileExtensions": [
       "js",
       "json",
       "ts"
     ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "rootDir": ".",
+    "testRegex": "spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "<rootDir>\"test\"coverage",
+    "coverageDirectory": "<rootDir>/test/coverage",
     "coveragePathIgnorePatterns": [
       "<rootDir>/test/shared"
     ],
@@ -94,8 +92,8 @@
     "verbose": false,
     "silent": false,
     "moduleNameMapper": {
-      "^src/(.*)$": "<rootDir>\"src\"$1",
-      "^test/(.*)$": "<rootDir>\"test\"$1"
+      "^src/(.*)$": "<rootDir>/src/$1",
+      "^test/(.*)$": "<rootDir>/test/$1"
     }
   }
 }

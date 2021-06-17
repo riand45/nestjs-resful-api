@@ -20,7 +20,7 @@ import { V1BarbermansTransformer } from './v1-barbermans.transofrmer';
 
 @ApiTags('Barberman Endpoint List')
 // @HeaderDocs()
-@Controller('bookings')
+@Controller('barbermans')
 export class V1BarbermanController {
   constructor(
     private barbermansUseCase: V1BarbermansUseCase,
