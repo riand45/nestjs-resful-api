@@ -49,6 +49,6 @@ export class Booking extends Model<Booking> {
   })
   status: boolean;
 
-  // @BelongsTo(() => Schedule)
-  // schedule: Schedule;
+  @BelongsTo(() => Schedule)
+  schedule: Schedule;
 }

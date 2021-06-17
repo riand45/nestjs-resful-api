@@ -12,17 +12,20 @@ import { BarbermansModule } from './modules/barbermans/barbermans.module';
 import { CustomersModule } from './modules/customers/customers.module';
 import { AuthModule } from './modules/auth/auth.module';
 
+import { BARBERMAN_MODULE_LIST } from './barbermans-module.list';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    DatabaseModule,
-    SchedulesModule,
-    BookingsModule,
-    ServicesModule,
-    LocationsModule,
-    BarbermansModule,
-    CustomersModule,
-    AuthModule,
+    ...BARBERMAN_MODULE_LIST,
+    // DatabaseModule,
+    // SchedulesModule,
+    // BookingsModule,
+    // ServicesModule,
+    // LocationsModule,
+    // BarbermansModule,
+    // CustomersModule,
+    // AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

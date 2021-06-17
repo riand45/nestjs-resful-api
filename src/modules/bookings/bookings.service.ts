@@ -11,7 +11,7 @@ export class BookingsService {
   ) { }
 
   async findAll(): Promise<Booking[]> {
-    return await this.bookingRepository.findAll<Booking>();
+    return await this.bookingRepository.findAll();
   }
 
   // async create(bookingDto: any): Promise<Booking> {
