@@ -4,6 +4,7 @@ import sequelize from "sequelize";
 import { Transaction } from "sequelize/types";
 import { Barbermans } from 'src/domain/repositories/interfaces/barbermans-services.interface';
 import { MEDEA_DB } from 'src/infrastructure/constants/general.constant';
+import { PaginateQuery } from 'src/domain/repositories/interfaces/global.interface';
 import { BarbermansRepository } from 'src/domain/repositories/barbermans.repository';
 import { V1CreateBarbermansDto } from 'src/interfaces/rest/barbermans/v1/barbermans/dto/v1-barbermans-create.dto';
 
@@ -71,5 +72,19 @@ export class BarbermansServices implements BarbermansRepository {
           plain: true
         }
     );
+  }
+
+  async find(
+    queries: PaginateQuery
+  ): Promise<{ rows: Barbermans[]; count: number }> {
+    return await this.sequelize.query(`
+        select * from barbermans 
+        ${queries.sort} ${queries.limit};`,
+      {
+        raw: true,
+        type: sequelize.QueryTypes.SELECT,
+        bind: queries.bind,
+        logging: false
+      })
   }
 }

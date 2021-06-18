@@ -54,7 +54,6 @@ describe('All Function On Barberman Controller', () => {
       );
       expect(typeof result).toEqual('object');
       expect(result).toHaveProperty('data');
-      expect(result.data).toHaveProperty('id');
       expect(result.data).toHaveProperty('name');
       expect(result.data).toHaveProperty('status');
       expect(result.data).toHaveProperty('price');
@@ -66,11 +65,7 @@ describe('All Function On Barberman Controller', () => {
     });
 
     it('should return a meta object with these propeties and values', async () => {
-      const { data } = await barbermanController.create(
-        RequestCreateBarbermans,
-        barbermanBody
-      );
-      expect(data.id).toEqual(expect.any(Number));
+      const { data } = await barbermanController.create(RequestCreateBarbermans, barbermanBody);
       expect(data.name).toEqual(expect.any(String));
       expect(data.status).toEqual(expect.any(Number));
       expect(data.price).toEqual(expect.any(Number));
@@ -84,10 +79,7 @@ describe('All Function On Barberman Controller', () => {
     it('should return an error', async () => {
       barbermansUseCase.create = jest.fn().mockRejectedValue(new Error());
       try {
-        await barbermanController.create(
-          RequestCreateBarbermans,
-          barbermanBody
-        );
+        await barbermanController.create(RequestCreateBarbermans, barbermanBody);
       } catch (err) {
         expect(err.message).toEqual('Something Wrong Please Try Again');
       }

@@ -21,4 +21,27 @@ export class V1BarbermansTransformer {
       meta: generateMeta(10, 1, 0),
     };
   }
+
+  public transformFind(
+    barbermans: any,
+    params: Pagination,
+  ): BarbermansPaginateResponse {
+    const newData = barbermans.map((barberman) => ({
+      id: barberman.id,
+      name: barberman.name,
+      status: barberman.status,
+      price: barberman.price,
+      price_discount: barberman.price_discount,
+      location_id: barberman.location_id,
+      service: barberman.service,
+      email: barberman.email,
+      photo: barberman.photo,
+      created_at: barberman.created_at,
+    }));
+
+    return {
+      data: newData,
+      meta: generateMeta(params.limit, params.skip),
+    };
+  }
 }

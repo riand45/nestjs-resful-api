@@ -16,7 +16,9 @@ import { GlobalDocs } from "../../../shared/docs/decorator-compose/global-docs.d
 import { HeaderDocs } from 'src/interfaces/rest/shared/docs/decorator-compose/header-docs.decorator';
 import { RequestCreateBarberman } from './interfaces/v1-barbermans.interface';
 import { V1CreateBarbermansDto } from "./dto/v1-barbermans-create.dto";
-import { V1BarbermansTransformer } from './v1-barbermans.transofrmer';
+import { V1BarbermansTransformer } from './v1-barbermans.transformer';
+import { SuccessBarbermanFindDoc } from './docs/success-barbermans-find.doc';
+import { V1FindBarbermansDto } from './dto/v1-barbermas-find.dto';
 
 @ApiTags('Barberman Endpoint List')
 // @HeaderDocs()
@@ -33,10 +35,9 @@ export class V1BarbermanController {
     description: 'Success',
   })
   @Post()
-  // @UseInterceptors(MedeaTransactionInterceptor)
   public async create(
     @Req() req: RequestCreateBarberman,
-    @Body() body: V1CreateBarbermansDto,
+    @Body() body: V1CreateBarbermansDto
   ): Promise<any> {
     try {
       const result = await this.barbermansUseCase.create(
@@ -45,6 +46,28 @@ export class V1BarbermanController {
       );
 
       return this.barbermansTransformer.transformFindOne(result.data);
+    } catch (err) {
+      throw new ErrorHandler(err);
+    }
+  }
+
+  @GlobalDocs({ summary: '(List Barbermans)' })
+  @ApiResponse({
+    status: 200,
+    description: 'Success',
+    type: SuccessBarbermanFindDoc
+  })
+  @Get()
+  public async find(@Query() query: V1FindBarbermansDto): Promise<any> {
+    try {
+      const result = await this.barbermansUseCase.find(query);
+      return this.barbermansTransformer.transformFind(
+        result.rows,
+        {
+          skip: Number(query.skip),
+          limit: Number(query.limit),
+        },
+      )
     } catch (err) {
       throw new ErrorHandler(err);
     }

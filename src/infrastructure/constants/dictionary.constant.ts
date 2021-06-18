@@ -1,0 +1,1 @@
+export const SORT_TYPE = ['asc', 'desc', 'ASC', 'DESC'];

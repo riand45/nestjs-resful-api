@@ -8,7 +8,7 @@ import { medeaProviders } from 'src/infrastructure/database/postgres/medea-db/me
 import { BarbermansServices } from 'src/infrastructure/database/postgres/medea-db/services/barbermans.service';
 import { V1BarbermanController } from './v1-barbermans.controller';
 // Transformers
-import { V1BarbermansTransformer } from './v1-barbermans.transofrmer';
+import { V1BarbermansTransformer } from './v1-barbermans.transformer';
 import moment from 'moment';
 
 @Module({

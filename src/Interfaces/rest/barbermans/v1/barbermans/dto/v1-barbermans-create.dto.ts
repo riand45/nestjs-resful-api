@@ -5,10 +5,7 @@ import {
   IsNumber,
   IsOptional,
   IsString,
-  IsEmail,
-  IsArray,
-  ArrayMinSize,
-  ArrayMaxSize,
+  IsEmail
 } from "class-validator";
 import { SharedContextDto } from 'src/interfaces/rest/shared/dto/shared-context.dto';
 

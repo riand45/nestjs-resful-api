@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.7% </span>
+                <span class="strong">21.74% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/23</span>
+                <span class='fraction'>5/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">5.26% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>1/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.7% </span>
+                <span class="strong">21.74% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/23</span>
+                <span class='fraction'>5/23</span>
             </div>
         
             
@@ -127,13 +127,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,72 +184,75 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as errors from '@nestjs/common';
 &nbsp;
 export class ErrorHandler extends Error {
-<span class="fstat-no" title="function not covered" >  constructor(e</span>rror) {
-<span class="cstat-no" title="statement not covered" >    super(error);</span>
+  constructor(error) {
+    super(error);
     // this.name = "Custom Validation Error";
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    switch (error.status) {</span>
-      case 400:
+    switch (error.status) {
+<span class="branch-0 cbranch-no" title="branch not covered" >      case 400:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.BadRequestException(error.message);</span>
 &nbsp;
-      case 401:
+<span class="branch-1 cbranch-no" title="branch not covered" >      case 401:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.UnauthorizedException(error.message);</span>
 &nbsp;
-      case 403:
+<span class="branch-2 cbranch-no" title="branch not covered" >      case 403:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.ForbiddenException(error.message);</span>
 &nbsp;
-      case 404:
+<span class="branch-3 cbranch-no" title="branch not covered" >      case 404:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.NotFoundException(error.message);</span>
 &nbsp;
-      case 405:
+<span class="branch-4 cbranch-no" title="branch not covered" >      case 405:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.MethodNotAllowedException(error.message);</span>
 &nbsp;
-      case 406:
+<span class="branch-5 cbranch-no" title="branch not covered" >      case 406:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.NotAcceptableException(error.message);</span>
 &nbsp;
-      case 408:
+<span class="branch-6 cbranch-no" title="branch not covered" >      case 408:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.RequestTimeoutException(error.message);</span>
 &nbsp;
-      case 409:
+<span class="branch-7 cbranch-no" title="branch not covered" >      case 409:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.ConflictException(error.message);</span>
 &nbsp;
-      case 410:
+<span class="branch-8 cbranch-no" title="branch not covered" >      case 410:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.GoneException(error.message);</span>
 &nbsp;
-      case 412:
+<span class="branch-9 cbranch-no" title="branch not covered" >      case 412:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.PreconditionFailedException(error.message);</span>
 &nbsp;
-      case 413:
+<span class="branch-10 cbranch-no" title="branch not covered" >      case 413:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.PayloadTooLargeException(error.message);</span>
 &nbsp;
-      case 415:
+<span class="branch-11 cbranch-no" title="branch not covered" >      case 415:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.UnsupportedMediaTypeException(error.message);</span>
 &nbsp;
-      case 500:
+<span class="branch-12 cbranch-no" title="branch not covered" >      case 500:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.InternalServerErrorException(error.message);</span>
 &nbsp;
-      case 501:
+<span class="branch-13 cbranch-no" title="branch not covered" >      case 501:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.NotImplementedException(error.message);</span>
 &nbsp;
-      case 502:
+<span class="branch-14 cbranch-no" title="branch not covered" >      case 502:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.BadGatewayException(error.message);</span>
 &nbsp;
-      case 503:
+<span class="branch-15 cbranch-no" title="branch not covered" >      case 503:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.ServiceUnavailableException(error.message);</span>
 &nbsp;
-      case 504:
+<span class="branch-16 cbranch-no" title="branch not covered" >      case 504:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.GatewayTimeoutException(error.message);</span>
 &nbsp;
-      case 505:
+<span class="branch-17 cbranch-no" title="branch not covered" >      case 505:</span>
 <span class="cstat-no" title="statement not covered" >        throw new errors.HttpVersionNotSupportedException(error.message);</span>
 &nbsp;
       default:
-<span class="cstat-no" title="statement not covered" >        throw new errors.InternalServerErrorException('Something Wrong Please Try Again');</span>
+        throw new errors.InternalServerErrorException('Something Wrong Please Try Again');
     }
   }
 }</pre></td></tr></table></pre>
@@ -262,7 +262,7 @@ export class ErrorHandler extends Error {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 17 2021 19:37:06 GMT+0700 (Indochina Time)
+                at Fri Jun 18 2021 13:33:16 GMT+0700 (GMT+07:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>

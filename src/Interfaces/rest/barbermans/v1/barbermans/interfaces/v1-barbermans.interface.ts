@@ -12,15 +12,14 @@ export interface BarbermansPaginateResponse extends BarbermansListResponse {
 }
 
 export interface RequestCreateBarberman extends Request {
-  id: string;
-  name: string;
-  status: number;
-  price: number;
-  price_discount: number;
-  location_id: number;
-  service: number;
-  email: string;
-  photo: string;
+  name?: string;
+  status?: number;
+  price?: number;
+  price_discount?: number;
+  location_id?: number;
+  service?: number;
+  email?: string;
+  photo?: string;
 }
 
 interface BarbermansObject {
