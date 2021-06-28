@@ -56,6 +56,7 @@ export class BarbermansServices implements BarbermansRepository {
     return await this.sequelize.query(
         `select
           barber.id,
+          barber.name,
           barber.status,
           barber.price,
           barber.price_discount,
